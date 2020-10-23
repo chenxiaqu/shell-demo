@@ -1,9 +1,64 @@
 <template>
-    <div class="a">
-        aa
-    </div>
+  <shell-layout class="Index">
+    <template slot="header">
+      <div class="flex_between_row header-wrapper">
+        <div class="reserved"></div>
+        <div class="flex_center_row userInfo">
+          <img class="userInfo-img" src="@/assets/img/img/user_img.jpg" />
+          <div class="userInfo-name">庞昭昭</div>
+        </div>
+      </div>
+    </template>
+    <template slot="main">
+      <div class="main-wrapper flex_start_row_wrapper">
+        <div
+          class="flex_center_column module"
+          v-for="item in modules"
+          :key="item.id"
+        >
+          <img class="module-img" :src="item.img" />
+          <div class="module-name">{{ item.title }}</div>
+          <div class="module-desc">{{ item.desc }}</div>
+        </div>
+      </div>
+    </template>
+  </shell-layout>
 </template>
 <script lang="ts" src="./Index.ts"></script>
 <style lang="scss">
-    
+.Index {
+  .header-wrapper {
+    padding: 0 24px;
+    height: 100%;
+    .userInfo {
+      padding: 0 12px;
+      cursor: pointer;
+      .userInfo-img {
+        margin-right: 12px;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+      }
+      .userInfo-name {
+        font-size: 16px;
+      }
+    }
+  }
+  .main-wrapper {
+    padding: 30px 240px;
+    height: 100%;
+    background-color: #f5f5f5;
+    .module {
+      flex: 20%;
+      height: 268px;
+      padding: 40px;
+      margin-bottom: 24px;
+      margin-right: 12px;
+      border-radius: 4px;
+      background-color: #fff;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+  }
+}
 </style>

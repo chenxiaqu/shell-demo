@@ -3,7 +3,7 @@
     <header class="header">
       <slot name="header"></slot>
     </header>
-    <main>
+    <main class="main">
       <slot name="main"></slot>
     </main>
   </div>

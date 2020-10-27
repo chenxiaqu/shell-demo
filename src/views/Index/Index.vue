@@ -16,9 +16,9 @@
           v-for="item in modules"
           :key="item.id"
         >
-          <img class="module-img" :src="item.img" />
-          <div class="module-name">{{ item.title }}</div>
-          <div class="module-desc">{{ item.desc }}</div>
+          <img class="img_48 module-img" :src="item.img" />
+          <div class="text_16_black Medium module-name">{{ item.title }}</div>
+          <div class="text_14_grey module-desc">{{ item.desc }}</div>
         </div>
       </div>
     </template>
@@ -46,18 +46,37 @@
   }
   .main-wrapper {
     padding: 30px 240px;
-    height: 100%;
     background-color: #f5f5f5;
+    box-sizing: border-box;
     .module {
-      flex: 20%;
-      height: 268px;
+      position: relative;
+      top: 0;
+      width: calc(25% - 12px);
+      height: 276px;
       padding: 40px;
       margin-bottom: 24px;
       margin-right: 12px;
       border-radius: 4px;
       background-color: #fff;
       box-sizing: border-box;
+      transition: top 0.5s;
       cursor: pointer;
+      .module-img {
+        border-radius: 8px;
+      }
+      .module-name {
+        margin-top: 12px;
+        width: 120px;
+        text-align: center;
+      }
+      .module-desc {
+        margin-top: 20px;
+        max-width: 240px;
+      }
+    }
+    .module:hover {
+      top: -10px;
+      box-shadow: 0 0 5px #a8a8b6;
     }
   }
 }

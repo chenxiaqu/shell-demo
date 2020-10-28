@@ -3,4 +3,5 @@ export default class Modules {
   title: string = '';
   img: string = '';
   desc: string = '';
+  name: string = '';
 }

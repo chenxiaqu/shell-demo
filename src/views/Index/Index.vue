@@ -2,7 +2,9 @@
   <shell-layout class="Index">
     <template slot="header">
       <div class="flex_between_row header-wrapper">
-        <div class="reserved"></div>
+        <div class="reserved">
+          <img class="userInfo-img" src="@/assets/img/img/user_img.jpg" />
+        </div>
         <div class="flex_center_row userInfo">
           <img class="userInfo-img" src="@/assets/img/img/user_img.jpg" />
           <div class="userInfo-name">庞昭昭</div>
@@ -15,6 +17,7 @@
           class="flex_center_column module"
           v-for="item in modules"
           :key="item.id"
+          @click="goLink(item)"
         >
           <img class="img_48 module-img" :src="item.img" />
           <div class="text_16_black Medium module-name">{{ item.title }}</div>
@@ -33,15 +36,15 @@
     .userInfo {
       padding: 0 12px;
       cursor: pointer;
-      .userInfo-img {
-        margin-right: 12px;
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-      }
       .userInfo-name {
         font-size: 16px;
       }
+    }
+    .userInfo-img {
+      margin-right: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
     }
   }
   .main-wrapper {

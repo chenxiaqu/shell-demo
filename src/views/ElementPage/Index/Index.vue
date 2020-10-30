@@ -3,20 +3,23 @@
     <template slot="header">
       <div class="flex_between_row header-wrapper">
         <div class="reserved">
-          <img class="userInfo-img" src="@/assets/img/img/user_img.jpg" />
+          <i class="el-icon-s-home backHome" @click="backHome"></i>
         </div>
         <div class="flex_center_row userInfo">
           <img class="userInfo-img" src="@/assets/img/img/user_img.jpg" />
-          <div class="userInfo-name">庞昭昭</div>
+          <div class="text_16_white userInfo-name">好多钱</div>
         </div>
       </div>
     </template>
     <template slot="main">
       <div class="flex_center_row ElementPageIndex-content">
         <div class="left-menus">
-          <Menus></Menus>
+          <Menus :menus="menus"></Menus>
         </div>
-        <div class="content"></div>
+        <div class="content">
+          <Shell-Tabs></Shell-Tabs>
+          <router-view />
+        </div>
       </div>
     </template>
   </shell-layout>
@@ -27,6 +30,12 @@
   .header-wrapper {
     padding: 0 24px;
     height: 100%;
+    background-color: #1890ff;
+    .backHome {
+      font-size: 36px;
+      color: white;
+      cursor: pointer;
+    }
     .userInfo {
       padding: 0 12px;
       cursor: pointer;

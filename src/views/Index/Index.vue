@@ -7,7 +7,7 @@
         </div>
         <div class="flex_center_row userInfo">
           <img class="userInfo-img" src="@/assets/img/img/user_img.jpg" />
-          <div class="userInfo-name">庞昭昭</div>
+          <div class="text_16_white userInfo-name">好多钱</div>
         </div>
       </div>
     </template>
@@ -33,6 +33,7 @@
   .header-wrapper {
     padding: 0 24px;
     height: 100%;
+    background-color: #1890ff;
     .userInfo {
       padding: 0 12px;
       cursor: pointer;
@@ -48,7 +49,7 @@
     }
   }
   .main-wrapper {
-    padding: 30px 240px;
+    padding: 3vh 12vw;
     background-color: #f5f5f5;
     box-sizing: border-box;
     .module {

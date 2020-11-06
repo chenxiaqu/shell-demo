@@ -1,5 +1,6 @@
 <template>
   <shell-layout class="ElementPageIndex">
+    <!-- 上 -->
     <template slot="header">
       <div class="flex_between_row header-wrapper">
         <div class="reserved">
@@ -11,13 +12,18 @@
         </div>
       </div>
     </template>
-    <template slot="main">
+    <!-- 下 -->
+    <template slot="main" v-if="menus.length > 0">
       <div class="flex_center_row ElementPageIndex-content">
+        <!-- 左侧菜单栏 -->
         <div class="left-menus">
-          <Menus :menus="menus"></Menus>
+          <menus :menus="menus"></menus>
         </div>
+        <!-- 内容区域 -->
         <div class="content">
+          <!-- 动态菜单栏 -->
           <Shell-Tabs></Shell-Tabs>
+          <!-- 主要内容 -->
           <router-view />
         </div>
       </div>

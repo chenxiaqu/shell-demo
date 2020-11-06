@@ -1,5 +1,6 @@
 <template>
   <div class="Menus">
+    <!-- 饿了么菜单外部 -->
     <el-menu
       default-active="1-4-1"
       class="el-menu-vertical-demo"
@@ -7,7 +8,12 @@
       @close="handleClose"
       :collapse="isCollapse"
     >
-      <Menu-item :menuItem="menus"></Menu-item>
+      <!-- 每个菜单项 -->
+      <menu-item
+        v-for="item in menus"
+        :menuItem="item"
+        :key="item.title"
+      ></menu-item>
     </el-menu>
   </div>
 </template>

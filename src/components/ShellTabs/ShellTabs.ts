@@ -12,4 +12,11 @@ export default class ShellTabs extends Vue {
   selectTab(name: string) {
     this.$router.push({ name: name });
   }
+
+  /**
+   * 删除选中tab
+   */
+  del() {
+    console.log(666);
+  }
 }

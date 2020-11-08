@@ -10,16 +10,33 @@ export default class Menus extends Vue {
   isCollapse: boolean = false; // 菜单栏是否收起
 
   /**
-   * 菜单栏伸展
+   *
+   * @param link 选中的菜单path
    */
-  handleOpen() {
-    this.isCollapse = false;
+  selectLink(link) {
+    this.$router.push({ path: link });
+    console.log(this.$route);
   }
 
   /**
-   * 菜单栏收起
+   *
+   * 控制菜单栏
    */
-  handleClose() {
-    this.isCollapse = true;
+  control() {
+    this.isCollapse = !this.isCollapse;
+  }
+
+  /**
+   * 伸展菜单项
+   */
+  handleOpen(key, path) {
+    console.log(key, path);
+  }
+
+  /**
+   * 关闭菜单项
+   */
+  handleClose(key, path) {
+    console.log(key, path);
   }
 }

@@ -20,11 +20,13 @@
           <menus :menus="menus"></menus>
         </div>
         <!-- 内容区域 -->
-        <div class="content">
+        <div class="right">
           <!-- 动态菜单栏 -->
-          <Shell-Tabs></Shell-Tabs>
+          <Shell-Tabs class="shell-tabs"></Shell-Tabs>
           <!-- 主要内容 -->
-          <router-view />
+          <div class="content">
+            <router-view />
+          </div>
         </div>
       </div>
     </template>
@@ -59,12 +61,20 @@
   .ElementPageIndex-content {
     height: 100%;
     .left-menus {
-      width: 128px;
+      min-width: 188px;
       height: 100%;
+      transition: width 5s;
     }
-    .content {
+    .right {
       flex: 1;
       height: 100%;
+      .shell-tabs {
+        height: 64px;
+      }
+      .content {
+        width: 100%;
+        height: calc(100% - 64px);
+      }
     }
   }
 }

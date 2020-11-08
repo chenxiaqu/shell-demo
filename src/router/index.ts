@@ -12,7 +12,20 @@ const routes: Array<RouteConfig> = [
   {
     path: '/ElementPage',
     name: 'ElementPage',
-    component: () => import('../views/ElementPage/Index/Index.vue')
+    component: () => import('../views/ElementPage/Index/Index.vue'),
+    redirect: '/ElementPage/Table',
+    children: [
+      {
+        path: '/ElementPage/Table',
+        name: 'Table',
+        component: () => import('../views/ElementPage/Table/Table.vue')
+      },
+      {
+        path: '/ElementPage/Dialog',
+        name: 'Dialog',
+        component: () => import('../views/ElementPage/Dialog/Dialog.vue')
+      }
+    ]
   }
 ];
 

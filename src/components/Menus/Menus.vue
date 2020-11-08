@@ -2,10 +2,11 @@
   <div class="Menus">
     <!-- 饿了么菜单外部 -->
     <el-menu
-      default-active="1-4-1"
+      :default-active="$route.path"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
+      @select="selectLink"
       :collapse="isCollapse"
     >
       <!-- 每个菜单项 -->
@@ -20,6 +21,7 @@
 <script src="./Menus.ts"></script>
 <style lang="scss">
 .Menus {
+  position: relative;
   height: 100%;
   .el-menu-vertical-demo {
     height: 100%;

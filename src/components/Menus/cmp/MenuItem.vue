@@ -1,32 +1,37 @@
 <template>
-  <!-- 菜单项细分 -->
-  <div class="MenuItem">
-    <!-- 如果菜单项下面还有子菜单 -->
-    <el-submenu v-if="menuItem.children.length > 0" :index="menuItem.title">
-      <template slot="title">
-        <i class="el-icon-location"></i>
-        <span slot="title">{{ menuItem.title }}</span>
-      </template>
-      <el-menu-item-group v-for="item in menuItem.children" :key="item.title">
-        <div v-if="item.children.length > 0">
-          <menu-items
-            v-for="child in item.children"
-            :menuItem="child"
-            :key="child.name"
-          ></menu-items>
-        </div>
-        <el-menu-item v-else :index="menuItem.name">
-          <i class="el-icon-menu"></i>
-          <span slot="title">{{ menuItem.title }}</span>
-        </el-menu-item>
-      </el-menu-item-group>
-    </el-submenu>
-    <!-- 菜单项下面没有有子菜单 -->
-    <el-menu-item v-else :index="menuItem.name">
-      <i class="el-icon-menu"></i>
+  <!-- 如果菜单项下面还有子菜单 -->
+  <el-submenu v-if="menuItem.children.length > 0" :index="menuItem.title">
+    <!-- 菜单栏name -->
+    <template slot="title">
+      <i class="el-icon-location"></i>
       <span slot="title">{{ menuItem.title }}</span>
-    </el-menu-item>
-  </div>
+    </template>
+    <!-- 循环遍历子菜单 -->
+    <div v-for="item in menuItem.children" :key="item.title">
+      <!-- 若子菜单下仍有下级菜单,递归调用该组件 -->
+      <el-submenu v-if="item.children.length > 0" :index="item.title">
+        <template slot="title">
+          <i class="el-icon-location"></i>
+          <span slot="title">{{ item.title }}</span>
+        </template>
+        <menu-items
+          v-for="child in item.children"
+          :menuItem="child"
+          :key="child.title"
+        ></menu-items>
+      </el-submenu>
+      <!-- 若没有,则为可跳转菜单项 -->
+      <el-menu-item v-else :index="menuItem.path">
+        <i class="el-icon-menu"></i>
+        <span slot="title">{{ menuItem.title }}</span>
+      </el-menu-item>
+    </div>
+  </el-submenu>
+  <!-- 若没有,则为可跳转菜单项 -->
+  <el-menu-item v-else :index="menuItem.path">
+    <i class="el-icon-menu"></i>
+    <span slot="title">{{ menuItem.title }}</span>
+  </el-menu-item>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';

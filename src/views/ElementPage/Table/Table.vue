@@ -1,5 +1,5 @@
 <template>
-  <div class="Table">1</div>
+  <div class="Table">2</div>
 </template>
 <script src="./Table.ts"></script>
 <style lang="scss">

@@ -1,7 +1,13 @@
 import Vue from 'vue';
-import VueRouter, { RouteConfig } from 'vue-router';
+import VueRouter, { RawLocation, RouteConfig } from 'vue-router';
 
 Vue.use(VueRouter);
+
+const originalPush = VueRouter.prototype.push;
+
+VueRouter.prototype.push = function push(location: RawLocation) {
+  return originalPush.call(this, location).catch(err => err);
+};
 
 const routes: Array<RouteConfig> = [
   {
@@ -13,8 +19,13 @@ const routes: Array<RouteConfig> = [
     path: '/ElementPage',
     name: 'ElementPage',
     component: () => import('../views/ElementPage/Index/Index.vue'),
-    redirect: '/ElementPage/Table',
+    redirect: '/ElementPage/HomePage',
     children: [
+      {
+        path: '/ElementPage/HomePage',
+        name: 'HomePage',
+        component: () => import('../views/ElementPage/HomePage/HomePage.vue')
+      },
       {
         path: '/ElementPage/Table',
         name: 'Table',

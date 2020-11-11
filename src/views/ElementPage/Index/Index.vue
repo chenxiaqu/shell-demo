@@ -17,12 +17,17 @@
       <div class="flex_center_row ElementPageIndex-content">
         <!-- 左侧菜单栏 -->
         <div class="left-menus">
-          <menus :menus="menus"></menus>
+          <menus @selectLink="selectLink" :menus="menus"></menus>
         </div>
         <!-- 内容区域 -->
         <div class="right">
           <!-- 动态菜单栏 -->
-          <Shell-Tabs class="shell-tabs"></Shell-Tabs>
+          <Shell-Tabs
+            @selectTab="selectTab"
+            @removeRoute="removeRoute"
+            :route="defaultTab"
+            class="shell-tabs"
+          ></Shell-Tabs>
           <!-- 主要内容 -->
           <div class="content">
             <router-view />

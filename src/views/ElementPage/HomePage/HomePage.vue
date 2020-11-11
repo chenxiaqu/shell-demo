@@ -1,9 +1,9 @@
 <template>
-  <div class="Dialog">3</div>
+  <div class="HomePage">1</div>
 </template>
-<script src="./Dialog.ts"></script>
+<script src="./HomePage.ts"></script>
 <style lang="scss">
-.Dialog {
+.Table {
   width: 100%;
   height: 100%;
 }

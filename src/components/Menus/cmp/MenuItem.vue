@@ -1,10 +1,10 @@
 <template>
   <!-- 如果菜单项下面还有子菜单 -->
-  <el-submenu v-if="menuItem.children.length > 0" :index="menuItem.title">
+  <el-submenu v-if="menuItem.children.length > 0" :index="menuItem.meta.title">
     <!-- 菜单栏name -->
     <template slot="title">
       <i class="el-icon-location"></i>
-      <span slot="title">{{ menuItem.title }}</span>
+      <span slot="title">{{ menuItem.meta.title }}</span>
     </template>
     <!-- 循环遍历子菜单 -->
     <div v-for="item in menuItem.children" :key="item.title">
@@ -23,14 +23,14 @@
       <!-- 若没有,则为可跳转菜单项 -->
       <el-menu-item v-else :index="menuItem.path">
         <i class="el-icon-menu"></i>
-        <span slot="title">{{ menuItem.title }}</span>
+        <span slot="title">{{ menuItem.meta.title }}</span>
       </el-menu-item>
     </div>
   </el-submenu>
   <!-- 若没有,则为可跳转菜单项 -->
   <el-menu-item v-else :index="menuItem.path">
     <i class="el-icon-menu"></i>
-    <span slot="title">{{ menuItem.title }}</span>
+    <span slot="title">{{ menuItem.meta.title }}</span>
   </el-menu-item>
 </template>
 <script lang="ts">

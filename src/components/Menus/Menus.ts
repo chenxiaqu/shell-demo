@@ -1,4 +1,5 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import { State, Mutation } from 'vuex-class';
 import MenuItem from './cmp/MenuItem.vue';
 
 @Component({
@@ -13,9 +14,8 @@ export default class Menus extends Vue {
    *
    * @param link 选中的菜单path
    */
-  selectLink(link) {
-    this.$router.push({ path: link });
-    console.log(this.$route);
+  selectLink(link: string) {
+    this.$emit('selectLink', link);
   }
 
   /**

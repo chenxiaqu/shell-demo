@@ -1,22 +1,25 @@
-import { CardSlots } from 'element-ui/types/card';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component({
   components: {}
 })
 export default class ShellTabs extends Vue {
+  @Prop({ type: Array, default: [] }) route;
+
   /**
    *
-   * @param name 路由name
+   * @param path 路由path，添加路由数据
    */
-  selectTab(name: string) {
-    this.$router.push({ name: name });
+  selectTab(path: string) {
+    this.$emit('selectTab', path);
   }
 
   /**
-   * 删除选中tab
+   *
+   * @param name 路由name，删除选中tab
+   * @param index 删除路由的下标
    */
-  del() {
-    console.log(666);
+  del(name: string, index: number) {
+    this.$emit('removeRoute', name, index);
   }
 }

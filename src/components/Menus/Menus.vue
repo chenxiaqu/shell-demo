@@ -13,7 +13,7 @@
       <menu-item
         v-for="item in menus"
         :menuItem="item"
-        :key="item.title"
+        :key="item.meta.title"
       ></menu-item>
     </el-menu>
   </div>

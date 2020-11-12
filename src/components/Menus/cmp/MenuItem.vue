@@ -7,12 +7,12 @@
       <span slot="title">{{ menuItem.meta.title }}</span>
     </template>
     <!-- 循环遍历子菜单 -->
-    <div v-for="item in menuItem.children" :key="item.title">
+    <div v-for="item in menuItem.children" :key="item.meta.title">
       <!-- 若子菜单下仍有下级菜单,递归调用该组件 -->
-      <el-submenu v-if="item.children.length > 0" :index="item.title">
+      <el-submenu v-if="item.children.length > 0" :index="item.meta.title">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <span slot="title">{{ item.title }}</span>
+          <span slot="title">{{ item.meta.title }}</span>
         </template>
         <menu-items
           v-for="child in item.children"

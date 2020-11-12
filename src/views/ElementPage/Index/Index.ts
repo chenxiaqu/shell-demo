@@ -56,13 +56,14 @@ export default class ElementPageIndex extends Vue {
         children: []
       }
     ];
-    // this.setMenus(menus);
-    // let currentPageString = sessionStorage.getItem('currentPage');
-    // if (currentPageString) {
-    //   console.log('currentPageString', currentPageString);
-    //   let currentPage = JSON.parse(currentPageString);
-    //   this.defaultTab.push(currentPage);
-    // }
+    this.setMenus(menus);
+    // 添加sessionStorage存储的最后一个路由对象到tab数据中，首页除外
+    let currentPageString = sessionStorage.getItem('currentPage');
+    // 避免首次进入系统时为空的情况
+    if (currentPageString !== 'undefined' && currentPageString) {
+      let currentPage = JSON.parse(currentPageString);
+      if (currentPage.name !== 'HomePage') this.defaultTab.push(currentPage);
+    }
   }
   /**
    *
@@ -70,46 +71,57 @@ export default class ElementPageIndex extends Vue {
    */
   selectLink(link: string) {
     this.$router.push({ path: link }).then(() => {
-      // 判断全局存储内是已有当前路由记录
+      // 判断是已有当前路由记录
       let isDuplicates = ArrayMethods.isDuplicates(
         this.defaultTab,
-        this.$route.name
-      )[0];
+        this.$route.name,
+        false
+      );
       // 没有，则添加记录
-      if (isDuplicates) {
-        this.pushRoute(isDuplicates);
-      } else {
-        sessionStorage.setItem('currentPage', JSON.stringify(isDuplicates));
+      if (!isDuplicates) {
+        let result = ArrayMethods.isDuplicates(
+          this.menus,
+          this.$route.name,
+          false
+        );
+        // 将跳转的菜单对象添加到tab数组中
+        this.pushRoute(result);
+        // 本地存储，网页刷新后仍然有当前tab项纪录
+        sessionStorage.setItem('currentPage', JSON.stringify(result));
+        return;
       }
+      // 本地存储，网页刷新后仍然有当前tab项纪录
+      sessionStorage.setItem('currentPage', JSON.stringify(isDuplicates));
     });
   }
 
   /**
    *
-   * @param name 删除路由对象的name
    * @param index 删除路由对象下标
    */
-  removeRoute(name: string, index: number) {
+  removeTab(index: number) {
     // 删除当前tab
-    this.defaultTab = this.defaultTab.filter(item => item.name !== name);
+    this.defaultTab.splice(index, 1);
     // 删除当前tab，选中前一项
-    this.selectTab(this.defaultTab[index - 1].path);
+    this.selectTab(this.defaultTab[index - 1]);
   }
 
   /**
    *
-   * @param path tab页传过的跳转路径
+   * @param item tab页对象
    */
-  selectTab(path: string) {
-    this.$router.push({ path: path });
+  selectTab(item: RouterLink) {
+    // 更新本地存储tab对象
+    sessionStorage.setItem('currentPage', JSON.stringify(item));
+    this.$router.push({ path: item.path });
   }
 
   /**
    *
-   * @param route 路由对象
+   * @param isDuplicates 路由对象
    */
-  pushRoute(route: any) {
-    this.defaultTab.push(route);
+  pushRoute(isDuplicates: any) {
+    this.defaultTab.push(isDuplicates);
   }
 
   /**

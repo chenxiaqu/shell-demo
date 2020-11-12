@@ -22,12 +22,14 @@
         <!-- 内容区域 -->
         <div class="right">
           <!-- 动态菜单栏 -->
-          <Shell-Tabs
-            @selectTab="selectTab"
-            @removeRoute="removeRoute"
-            :route="defaultTab"
-            class="shell-tabs"
-          ></Shell-Tabs>
+          <div class="tab">
+            <Shell-Tabs
+              @selectTab="selectTab"
+              @removeTab="removeTab"
+              :defaultTab="defaultTab"
+              class="shell-tabs"
+            ></Shell-Tabs>
+          </div>
           <!-- 主要内容 -->
           <div class="content">
             <router-view />
@@ -66,12 +68,11 @@
   .ElementPageIndex-content {
     height: 100%;
     .left-menus {
-      min-width: 188px;
+      width: 188px;
       height: 100%;
-      transition: width 5s;
     }
     .right {
-      flex: 1;
+      width: calc(100% - 188px);
       height: 100%;
       .shell-tabs {
         height: 64px;

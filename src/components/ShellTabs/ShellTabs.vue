@@ -1,34 +1,84 @@
 <template>
-  <div class="flex_start_row ShellTabs">
+  <div ref="tabWrapper" class="flex_start_row ShellTabs">
+    <!-- <i class="el-icon-arrow-left controlMove"></i> -->
     <div
-      class="nowrap ShellTabs-single"
-      v-for="(item, index) in route"
+      v-for="(item, index) in defaultTab"
       :key="index"
-      @click="selectTab(item.path)"
+      @click="selectTab(item)"
+      @mouseenter="enter(index)"
+      @mouseleave="leave(index)"
+      class="nowrap ShellTabs-single"
+      :class="selectedName == item.name ? 'ShellTabs-single-selected' : ''"
     >
       <!-- 当前tab名字 -->
-      <span class="text_14_light ShellTabs-single-text">{{ item.name }}</span>
+      <span
+        class="ShellTabs-single-text"
+        :class="
+          selectedName == item.name || entryIndex == index
+            ? 'text_14_blue'
+            : 'text_14_light'
+        "
+        >{{ item.meta.title }}</span
+      >
       <!-- 删除选中tab -->
-      <i
-        v-if="item.isDel"
-        class="el-icon-circle-close text_12_grey"
-        @click="del.stop(item.name, index)"
-      ></i>
+      <span
+        v-if="item.meta.isDel && entryIndex == index"
+        class="text_14_light DelIcon"
+        @click.stop="del(index)"
+        >x</span
+      >
+      <!-- tab选项卡下方滑块 -->
+      <div class="silder" :style="silder_style"></div>
     </div>
+    <!-- <i class="el-icon-arrow-right controlMove"></i> -->
   </div>
 </template>
 <script src="./ShellTabs.ts"></script>
 <style lang="scss">
 .ShellTabs {
-  width: 100%;
-  padding: 12px 24px 0 24px;
+  padding: 0 24px;
+  background-color: #fff;
   box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+  overflow-x: auto;
+  .controlMove {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+  }
   .ShellTabs-single {
-    padding: 12px;
+    position: relative;
+    margin: 0 4px;
+    padding: 12px 6px 12px 12px;
     max-width: 120px;
+    background-color: #fff;
+    cursor: pointer;
     .ShellTabs-single-text {
       margin-right: 12px;
     }
+    .DelIcon {
+      position: absolute;
+      right: 4px;
+    }
+    .DelIcon:hover {
+      color: black;
+    }
   }
+  .silder {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    background: #4350ff;
+    transition: all 0.3s;
+  }
+  .ShellTabs-single-selected {
+    border-bottom: 1px solid #4350ff;
+  }
+}
+::-webkit-scrollbar {
+  height: 4px;
 }
 </style>

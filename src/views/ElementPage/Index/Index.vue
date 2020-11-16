@@ -24,6 +24,8 @@
           <!-- 动态菜单栏 -->
           <div class="tab">
             <Shell-Tabs
+              :tabWidth="120"
+              :iconSize="30"
               @selectTab="selectTab"
               @removeTab="removeTab"
               :defaultTab="defaultTab"

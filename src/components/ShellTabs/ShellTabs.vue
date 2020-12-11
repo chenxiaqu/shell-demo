@@ -20,7 +20,7 @@
           @mouseleave="leave(index)"
           class="nowrap ShellTabs-single"
           :class="selectedName == item.name ? 'ShellTabs-single-selected' : ''"
-          :style="{ width: tabWidthStyle, 'min-width': tabWidthStyle }"
+          :style="{ width: tabWidthStyle }"
         >
           <!-- 当前tab名字 -->
           <span

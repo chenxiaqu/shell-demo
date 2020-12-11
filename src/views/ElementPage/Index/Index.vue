@@ -1,3 +1,12 @@
+<!--
+ * @Author: 庞昭昭
+ * @Date: 2020-10-28 22:20:39
+ * @LastEditTime: 2020-12-11 14:00:40
+ * @LastEditors: 庞昭昭
+ * @Description: 组件模块架子
+ * @FilePath: \shell-demo\src\views\ElementPage\Index\Index.vue
+ * @记得注释
+-->
 <template>
   <shell-layout class="ElementPageIndex">
     <!-- 上 -->
@@ -81,7 +90,9 @@
       }
       .content {
         width: 100%;
+        padding: 24px;
         height: calc(100% - 64px);
+        box-sizing: border-box;
       }
     }
   }

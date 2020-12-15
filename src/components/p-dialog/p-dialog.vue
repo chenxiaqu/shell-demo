@@ -1,7 +1,7 @@
 <!--
  * @Author: 庞昭昭
  * @Date: 2020-12-11 14:30:02
- * @LastEditTime: 2020-12-11 15:45:00
+ * @LastEditTime: 2020-12-14 17:29:36
  * @LastEditors: 庞昭昭
  * @Description: dialog组件
  * @FilePath: \shell-demo\src\components\p-dialog\p-dialog.vue
@@ -28,7 +28,7 @@
   </div>
 </template>
 <script lang="ts" src="./p-dialog.ts"></script>
-<style lang="scss">
+<style lang="scss" scoped>
 .p-dialog {
   position: relative;
   margin: 0 auto;

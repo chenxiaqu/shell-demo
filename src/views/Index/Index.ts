@@ -1,6 +1,6 @@
 import ShellLayout from '@/layouts/ShellLayout/ShellLayout.vue';
+import Modules from '@/model/Basics/Modules';
 import { Component, Vue } from 'vue-property-decorator';
-import Modules from '@/model/Basics/modules.ts';
 
 @Component({
   components: { ShellLayout }
@@ -18,17 +18,17 @@ export default class Index extends Vue {
       },
       {
         id: '2',
-        title: '第二个模块',
+        title: '微应用-vue',
         img: this.img,
-        desc: '这是第二个模块呀',
-        name: 'ElementPage'
+        desc: '这是vue模块啊',
+        name: 'micro-vue'
       },
       {
         id: '3',
         title: '第三个模块',
         img: this.img,
         desc: '这是第三个模块呀',
-        name: 'ElementPage'
+        name: 'web-components'
       },
       {
         id: '4',

@@ -37,11 +37,21 @@ const routes: Array<RouteConfig> = [
         component: () => import('../views/ElementPage/Dialog/Dialog.vue')
       }
     ]
+  },
+  {
+    path: '/micro-vue',
+    name: 'micro-vue'
+  },
+  {
+    path: '/web-components',
+    name: 'web-components',
+    component: () => import('../views/WebComponents/Index.vue')
   }
 ];
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 });
 
 export default router;

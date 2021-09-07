@@ -1,7 +1,7 @@
 /*
  * @Author: 庞昭昭
  * @Date: 2021-08-06 14:33:33
- * @LastEditTime: 2021-08-09 09:34:11
+ * @LastEditTime: 2021-09-07 16:38:41
  * @LastEditors: 庞昭昭
  * @Description: 微前端应用
  * @FilePath: \shell-demo\src\microapp\index.ts
@@ -16,12 +16,6 @@ export default class MicroApp {
       entry: '//localhost:3000',
       container: '#container',
       activeRule: '/micro-vue'
-    },
-    {
-      name: 'sop',
-      entry: '//portal.hd123.com/sop-web/test/index.html',
-      container: '#frame',
-      activeRule: '/sop'
     }
   ];
   static init() {
